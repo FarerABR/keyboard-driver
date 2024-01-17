@@ -1,0 +1,53 @@
+#include "../cpu/idt.h"
+#include "../cpu/isr.h"
+// #include "../cpu/timer.h"
+#include "../drivers/display.h"
+#include "../drivers/keyboard.h"
+
+#include "util.h"
+// #include "mem.h"
+
+// void* alloc(int n) {
+//     int *ptr = (int *) mem_alloc(n * sizeof(int));
+//     if (ptr == NULL_POINTER) {
+//         print_string("Memory not allocated.\n");
+//     } else {
+//         // Get the elements of the array
+//         for (int i = 0; i < n; ++i) {
+// //            ptr[i] = i + 1; // shorthand for *(ptr + i)
+//         }
+
+//         for (int i = 0; i < n; ++i) {
+// //            char str[256];
+// //            int_to_string(ptr[i], str);
+// //            print_string(str);
+//         }
+// //        print_nl();
+//     }
+//     return ptr;
+// }
+
+
+void start_kernel() {
+    char *video_memory = (char *)0xb8000;
+    *video_memory = 'X';
+    clear_screen();
+    print_string("Installing interrupt service routines (ISRs).\n");
+    isr_install();
+
+    print_string("Enabling external interrupts.\n");
+    asm volatile("sti");
+
+    print_string("Initializing keyboard (IRQ 1).\n");
+    init_keyboard();
+}
+
+// void execute_command(char *input) {
+//     if (compare_string(input, "EXIT") == 0) {
+//         print_string("Stopping the CPU. Bye!\n");
+//         asm volatile("hlt");
+//     }
+//     print_string("Unknown command: ");
+//     print_string(input);
+//     print_string("\n> ");
+// }
