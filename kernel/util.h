@@ -10,6 +10,8 @@ int string_length(const char s[]);
 
 void string_to_char_array(char out[],const  char *str);
 
+void clear_string(char s[]);
+
 void reverse(char s[]);
 
 void int_to_string(int n, char str[]);

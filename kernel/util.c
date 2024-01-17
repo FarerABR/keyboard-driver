@@ -16,6 +16,7 @@ void reverse(char s[]) {
     s[j] = c;
   }
 }
+void clear_string(char s[]) { *s = '\0'; }
 
 void int_to_string(int n, char str[]) {
   int i, sign;
