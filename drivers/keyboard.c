@@ -55,9 +55,11 @@ void print_letter(uint8_t scancode) {
       append(str, msg);
       print_string(str);
     }
+
   } else if ((int)scancode > SC_MAX &&
              (int)scancode < 0x80) { // key is not in the list
     print_string("Unknown key down");
+
   } else if ((int)scancode <= SC_MAX + 0x80) { // key is recognized and released
     const char *key = sc_name[(int)(scancode - 0x80)];
     if (key == "Lctrl" || key == "LShift" || key == "LAlt" || key == "Rctrl" ||
@@ -79,7 +81,8 @@ void print_letter(uint8_t scancode) {
       print_string(u_msg);
       // remove from the stack
       clear_string(last_char);
-    } else if (string_length(last_char) > 0) { // alt key + key is up
+
+    } else if (string_length(last_char) > 0) { // alt-key + key is up
       char str[string_length(key) + string_length(last_char)];
       char sec_key[string_length(key)];
       string_to_char_array(str, last_char);
@@ -93,7 +96,8 @@ void print_letter(uint8_t scancode) {
       clear_string(last_char);
       // set the flag
       alt_up = false;
-    } else {
+
+    } else { // just a simple key being released
       char str[string_length(key)];
       string_to_char_array(str, key);
       char msg[] = "key up ";

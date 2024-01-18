@@ -1,6 +1,5 @@
 #include "../cpu/idt.h"
 #include "../cpu/isr.h"
-// #include "../cpu/timer.h"
 #include "../drivers/display.h"
 #include "../drivers/keyboard.h"
 
@@ -41,13 +40,3 @@ void start_kernel() {
     print_string("Initializing keyboard (IRQ 1).\n");
     init_keyboard();
 }
-
-// void execute_command(char *input) {
-//     if (compare_string(input, "EXIT") == 0) {
-//         print_string("Stopping the CPU. Bye!\n");
-//         asm volatile("hlt");
-//     }
-//     print_string("Unknown command: ");
-//     print_string(input);
-//     print_string("\n> ");
-// }
