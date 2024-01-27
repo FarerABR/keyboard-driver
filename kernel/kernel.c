@@ -4,28 +4,6 @@
 #include "../drivers/keyboard.h"
 
 #include "util.h"
-// #include "mem.h"
-
-// void* alloc(int n) {
-//     int *ptr = (int *) mem_alloc(n * sizeof(int));
-//     if (ptr == NULL_POINTER) {
-//         print_string("Memory not allocated.\n");
-//     } else {
-//         // Get the elements of the array
-//         for (int i = 0; i < n; ++i) {
-// //            ptr[i] = i + 1; // shorthand for *(ptr + i)
-//         }
-
-//         for (int i = 0; i < n; ++i) {
-// //            char str[256];
-// //            int_to_string(ptr[i], str);
-// //            print_string(str);
-//         }
-// //        print_nl();
-//     }
-//     return ptr;
-// }
-
 
 void start_kernel() {
     char *video_memory = (char *)0xb8000;

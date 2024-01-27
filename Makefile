@@ -32,8 +32,8 @@ echo: os-image.bin
 %.bin: %.asm
 	nasm $< -f bin -o $@
 
-%.dis: %.bin
-	ndisasm -b 32 $< > $@
+# %.dis: %.bin
+# 	ndisasm -b 32 $< > $@
 
 clean:
 	$(RM) *.bin *.o *.dis *.elf
